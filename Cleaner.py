@@ -43,7 +43,7 @@ class Cleaner:
 		Return an Image centered as a rectangle
 		"""
 		img_width, img_height = self.img.size
-		return self.img.crop(((img_width - crop_width) // 2,(img_height - crop_height) // 2,(img_width + crop_width) // 2,(img_height + crop_height) // 2))
+		return self.img.crop(((img_width - crop_width) // 2,(img_height - crop_height) // 2,(img_width + crop_width) // 2,(img_height + crop_height) // 2))#Parte la imagen de dos en dos para obtener el entro y hacerlo un cuadrado
 
 	def mask_circle_solid(self, background_color, blur_radius, offset=0):
 		"""
@@ -51,7 +51,7 @@ class Cleaner:
 		"""
 		background = Image.new(self.img.mode, self.img.size, background_color)
 		offset = (blur_radius*2)+offset
-		mask = Image.new("L", self.img.size, 0)
+		mask = Image.new("L", self.img.size, 0)#Creamos una imagen de fondo negro
 		draw = ImageDraw.Draw(mask)
 		draw.ellipse((offset, offset, self.img.size[0] - offset, self.img.size[1] - offset), fill=255)
 		mask = mask.filter(ImageFilter.GaussianBlur(blur_radius))
@@ -68,20 +68,20 @@ class Cleaner:
 		Return an Image with the circle in the center and the rest of the
 		picture is transparent
 		"""
-		offset = (blur_radius * 2)+ offset
-		mask = Image.new("L", imgn.size, 0)
+		offset = (blur_radius * 2)+ offset#ESte será el espacio donde se deposita la imagen que contiene al cielo
+		mask = Image.new("L", imgn.size, 0)#Crea una imagen transparente
 		draw = ImageDraw.Draw(mask)
-		draw.ellipse((offset, offset, imgn.size[0] - offset, imgn.size[1] - offset), fill=255)
-		mask = mask.filter(ImageFilter.GaussianBlur(blur_radius))
-		result = imgn.copy()
-		result.putalpha(mask)
-		return result
+		draw.ellipse((offset, offset, imgn.size[0] - offset, imgn.size[1] - offset), fill=255)#Dejamos un molde donde sabremos que tamaño tendrá nuestra imagen
+		mask = mask.filter(ImageFilter.GaussianBlur(blur_radius))#El blur nos permite hacer mas densa la imagen y lo aplicamos sobre el molde
+		result = imgn.copy()#NUestra imagen es copiado
+		result.putalpha(mask)#Le aplicamos el filtro
+		return result #devolvemos la imagen
 
 	def filter_image(self):
 		"""
 		Returns just the center of an image
 		"""
-		im_square= self.crop_max_square().resize((self.img.size[0],self.img.size[0] ), Image.LANCZOS)    	
+		im_square= self.crop_max_square().resize((self.img.size[0],self.img.size[0] ), Image.LANCZOS)#Practicamente la estamos volviendo un cuadrado    	
 		im_thumb = self.mask_circle_transparent(im_square, 50)##50 marca el punto desde donde se verá la imagen circular
 		im_thumb.save("myNewCircled.png")
 

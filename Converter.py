@@ -54,12 +54,12 @@ def escala_de_grises():
     #Creamos una nueva imagen con las dimensiones de la imagen anterior
     im2 = Image.new('RGB', (x, y))
     i = 0
-    while i < x: # Xcentro + radio#Realmente es una complejidad O(n)
+    while i < x: # leemos pixel por pixel de la imagen Realmente es una complejidad O(n)
         j = 0
         while j < y:#Radio +centro en y
 
             #Obtenemos el valor RGB de cada pixel
-            r,g,b = im.getpixel((i,j))
+            r,g,b = im.getpixel((i,j))#Obtenemos el pixel desde las coordenada i,j
 
             #Obtenemos su equivalente en la escala de gris
             if b+g>=r+g:
