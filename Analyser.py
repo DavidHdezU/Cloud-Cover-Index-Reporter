@@ -10,5 +10,4 @@ foto= Image.open("img/test_sky.jpeg")
 datos= list(foto.getdata())
 
 
-for (r,g,b) in datos:
-	print(r)
+ 
