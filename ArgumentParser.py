@@ -77,13 +77,10 @@ class ArgumentParser:
         write the image created and the Cloud Coverage Index in 
         Standar Exit
         """
-        args, unknown = self.parser.parse_known_args()   
+        args, _ = self.parser.parse_known_args()   
         if args.plot:
             self.ploter.show_compareImages(self.imageProcessor.result_image())
         if args.s:
             self.__create_image()
-        elif args.s != None and args.s != True:
-            print("Option is unknown, check README.md")
-            sys.exit(1)
         print("Cloud Coverage Index: " + str(self.imageProcessor.get_CCI()))
             
