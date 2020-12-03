@@ -39,6 +39,29 @@ class ArgumentParser:
         self.parser.add_argument("--plot", "-p", help = "Plot the original image and the binary masked image", action='store_true')
         self.imageProcessor = ImageProcessor(self.img)
         self.ploter = Ploter(self.img)
+
+    def give_me_a_name(image_name):
+        """
+        Method that rewrite the name of an image; and before the extension signalized by .jpg
+        add a '-seg' prefix
+        Return:
+            str ->New Name
+        """
+        ext={"jpeg", "jpg", "png", "JPEG", "JPG", "PNG"}
+        if image_name is None:
+            raise ValueError
+
+        out_name=str(image_name).split(".")
+
+        out_string_name=""
+
+        for x in out_name:
+            if x in ext:
+                out_string_name+="-seg."
+            out_string_name+=x
+
+        return out_string_name
+
     
     def __create_image(self):
         """
@@ -46,15 +69,15 @@ class ArgumentParser:
         before the .jpg extension, will add an -seg note in the name
 
         """
-        out_name=self.image_name.split(".")
+        out_string_name= ArgumentParser.give_me_a_name(self.image_name)
 
-        out_string_name=out_name[0]+"-seg."+out_name[1]
         cv2.imwrite(out_string_name, self.imageProcessor.result_image())
         
     def main(self):
         """
         Process the image with the features given, as
-        return the image created and the Cloud Coverage Index
+        write the image created and the Cloud Coverage Index in 
+        Standar Exit
         """
         args, unknown = self.parser.parse_known_args()   
         if args.plot:
@@ -65,5 +88,8 @@ class ArgumentParser:
             self.ploter.show_HSLComposition()
         if args.s:
             self.__create_image()
+        elif args.s != None and args.s != True:
+            print("Option is unknown, check README.md")
+            sys.exit(1)
         print("Cloud Coverage Index: " + str(self.imageProcessor.get_CCI()))
             
