@@ -1,62 +1,43 @@
 import cv2
 import numpy as np
-import sys
 
 class Image:
     """
     A class that defines an Image given a file
     """
     def __init__(self, file):
-        self.file = self.__isImage(file)
-    
-    def __isImage(self, file):
         """
-        Verify if it is an image an return it as that
+        Constructor that receives an URL
+
         Args:
-            file: The string of the path's file
+            file (str): The URL of the image
         """
-        try:
-            img = cv2.imread(file)
-            return img
-        except:
-            print("Image could be locked or not exists, please check your file")
-            sys.exit(1)
+        self.file = cv2.imread(file)
+    
     
     def change_toRGB(self):
         """
-        Return an Image procesed by cvtColor method of cV2
+        Change the color chanel of the image to RGB
 
+        Returns:
+            Image: The image in RGB chanel
         """
-        try:
-            return cv2.cvtColor(self.file, cv2.COLOR_BGR2RGB)
-        except:
-            print("[FAILURE] Check your File or path, couldn't be analysed")
-            sys.exit(1)
+        return cv2.cvtColor(self.file, cv2.COLOR_BGR2RGB)
     
     def change_toHSL(self):
+         """
+        Change the color chanel of the image to HLS
+
+        Returns:
+            Image: The image in HLS chanel
         """
-        Return an Image procesed by cvtColor method of cV2
-        and under HLS Process
-        """
-        try:
-            return cv2.cvtColor(self.file, cv2.COLOR_BGR2HLS)
-        except:
-            print("[FAILURE] File couldn't be processed")
-            sys.exit(1)
-    
-    def change_toGrayScale(self):
-        """
-        Return an Image procesed by cvtColor method of cV2
-        and applied under change to GrayScale
-        """
-        try:
-            return cv2.cvtColor(self.file, cv2.COLOR_BGR2GRAY)
-        except:
-            print("[FAILURE] File couldn't be procesed")
-            sys.exit(1)
-    
+        return cv2.cvtColor(self.file, cv2.COLOR_BGR2HLS)
+        
     def get_RowsCols(self):
         """
-        Return Rows & Columns of image processed
+        Returns the dimensions of the image
+
+        Returns:
+            List: The dimensions of the image
         """
         return self.file.shape
