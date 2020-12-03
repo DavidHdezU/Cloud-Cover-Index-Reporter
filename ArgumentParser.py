@@ -31,11 +31,9 @@ class ArgumentParser:
         except ValueError:
             print("Verify your Image is in *.jpg format")
             sys.exit(1)
-        self.image_name=str(sys.argv[1])
+        self.image_name = str(sys.argv[1])
         self.parser = argparse.ArgumentParser()
         self.parser.add_argument("-s", "-S", help = "Pass the url of an image", action='store_true')
-        self.parser.add_argument("--hsl", "-hsl", help = "See HSL composition", action='store_true')
-        self.parser.add_argument("--rgb", "-rgb",help = "See RGB composition", action='store_true')
         self.parser.add_argument("--plot", "-p", help = "Plot the original image and the binary masked image", action='store_true')
         self.imageProcessor = ImageProcessor(self.img)
         self.ploter = Ploter(self.img)
@@ -69,7 +67,7 @@ class ArgumentParser:
         before the .jpg extension, will add an -seg note in the name
 
         """
-        out_string_name= ArgumentParser.give_me_a_name(self.image_name)
+        out_string_name = self.give_me_a_name(self.image_name)
 
         cv2.imwrite(out_string_name, self.imageProcessor.result_image())
         
@@ -82,10 +80,6 @@ class ArgumentParser:
         args, unknown = self.parser.parse_known_args()   
         if args.plot:
             self.ploter.show_compareImages(self.imageProcessor.result_image())
-        if args.rgb:
-            self.ploter.show_RGBComposition()
-        if args.hsl:
-            self.ploter.show_HSLComposition()
         if args.s:
             self.__create_image()
         elif args.s != None and args.s != True:
