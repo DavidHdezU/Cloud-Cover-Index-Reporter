@@ -22,17 +22,7 @@ class Image:
         Returns:
             Image: The image in RGB chanel
         """
-        return cv2.cvtColor(self.file, cv2.COLOR_BGR2RGB)
-    
-    def change_toHSL(self):
-         """
-        Change the color chanel of the image to HLS
-
-        Returns:
-            Image: The image in HLS chanel
-        """
-        return cv2.cvtColor(self.file, cv2.COLOR_BGR2HLS)
-        
+        return cv2.cvtColor(self.file, cv2.COLOR_BGR2RGB)    
     def get_RowsCols(self):
         """
         Returns the dimensions of the image
@@ -41,3 +31,12 @@ class Image:
             List: The dimensions of the image
         """
         return self.file.shape
+    
+    def change_toHSL(self):
+        """
+        Change the color chanel of the image to HLS
+
+        Returns:
+            Image: The image in HLS chanel
+        """
+        return cv2.cvtColor(self.file, cv2.COLOR_BGR2HLS)
