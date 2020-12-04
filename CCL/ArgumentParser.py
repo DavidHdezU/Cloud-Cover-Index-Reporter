@@ -2,6 +2,7 @@ import argparse
 from ImageProcessor import ImageProcessor
 from Ploter import Ploter
 from Image import Image
+from Photo import Photo
 import sys
 import cv2
 
@@ -38,27 +39,7 @@ class ArgumentParser:
         self.imageProcessor = ImageProcessor(self.img)
         self.ploter = Ploter(self.img)
 
-    def give_me_a_name(image_name):
-        """
-        Method that rewrite the name of an image; and before the extension signalized by .jpg
-        add a '-seg' prefix
-        Return:
-            str ->New Name
-        """
-        ext={"jpeg", "jpg", "png", "JPEG", "JPG", "PNG"}
-        if image_name is None:
-            raise ValueError
 
-        out_name=str(image_name).split(".")
-
-        out_string_name=""
-
-        for x in out_name:
-            if x in ext:
-                out_string_name+="-seg."
-            out_string_name+=x
-
-        return out_string_name
 
     
     def __create_image(self):
@@ -67,9 +48,9 @@ class ArgumentParser:
         before the .jpg extension, will add an -seg note in the name
 
         """
-        out_string_name = self.give_me_a_name(self.image_name)
+        photo = Photo(self.image_name)
 
-        cv2.imwrite(out_string_name, self.imageProcessor.result_image())
+        cv2.imwrite(photo.give_me_a_name(), self.imageProcessor.result_image())
         
     def main(self):
         """
