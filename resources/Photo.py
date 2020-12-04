@@ -24,9 +24,9 @@ class Photo:
             str ->New Name
         """
 
-		image_name=self.url
+		image_name=str(self.url)
 		ext={"jpeg", "jpg", "png", "JPEG", "JPG", "PNG"}
-		if image_name is None:
+		if self.url is None:
 			raise ValueError
 
 		out_name=str(image_name).split(".")
