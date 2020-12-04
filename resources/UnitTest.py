@@ -19,11 +19,14 @@ class UnitTest(unittest.TestCase):
 		"""
 		Verify that a wrong Argument raise an Exception
 		"""
-		self.assertRaises(ValueError,Photo.give_me_a_name, None)
+		photo = Photo(None)
+		self.assertRaises(ValueError,photo.give_me_a_name)
 
 	def test_give_me_a_name_returns(self):
-		self.assertEqual(Photo.give_me_a_name("1111.JPEG"), "1111-seg.JPEG")
-		self.assertNotEqual(Photo.give_me_a_name("1111.jpeg"), "1111.jpeg")
+		photo = Photo("1111.jpeg")
+		self.assertEqual(photo.give_me_a_name(), "1111-seg.jpeg")
+		photo2 = Photo("1111.jpg")
+		self.assertNotEqual(photo2.give_me_a_name(), "1111.jpg")
 
 
 
