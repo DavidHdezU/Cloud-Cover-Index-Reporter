@@ -16,7 +16,7 @@ class Photo:
 		"""
 		self.url=url
 
-	def give_me_a_name(self):
+	def give_me_a_name(self)->str:
 		"""
         Method that rewrite the name of an image; and before the extension signalized by .jpg
         add a '-seg' prefix
