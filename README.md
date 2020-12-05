@@ -78,7 +78,7 @@ git clone https://github.com/DavidHdezU/Cloud-Cover-Index-Reporter
  ```
  OK
  ```
- lo cual significa que se encuentra correcto
+ lo cual significa que se encuentra correcto.
  Debe ser de esta manera para que pueda correr las pruebas unitarias, ya que estas hacen uso de las imagenes de las carpeta TestComponents
 
 
