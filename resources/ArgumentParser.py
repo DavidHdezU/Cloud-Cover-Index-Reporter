@@ -25,7 +25,7 @@ class ArgumentParser:
         It will end the program and notify what has happened
         """
         if len(sys.argv) <= 1:
-            print("[FATAL ERROR] ----You must indicate  the correct path of your image")
+            print("Usó  python resources/Main.py <route/Image.jpeg>  [s (optional)] [S (optiona)] [p (optional)] [P optional]")
             sys.exit(1)
         try:
             self.img = Image(str(sys.argv[1]))
