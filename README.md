@@ -67,10 +67,6 @@ git clone https://github.com/DavidHdezU/Cloud-Cover-Index-Reporter
 ```
 2. Ubicate en resources y verifica la instalación de los paquetes con nuestro instalador:
   ```
-  bash install_librarys.sh
-  ```
-  ó
-  ```
   bash resources/install_library.sh
   ```
   Se instalará
@@ -83,6 +79,7 @@ git clone https://github.com/DavidHdezU/Cloud-Cover-Index-Reporter
  OK
  ```
  lo cual significa que se encuentra correcto
+ Debe ser de esta manera para que pueda correr las pruebas unitarias, ya que estas hacen uso de las imagenes de las carpeta TestComponents
 
 
 
