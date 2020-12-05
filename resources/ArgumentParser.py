@@ -24,7 +24,7 @@ class ArgumentParser:
         Exception: If the path doesn't exists or the Image is not a legible format
         It will end the program and notify what has happened
         """
-        if len(sys.argv)<=1:
+        if len(sys.argv) <= 1:
             print("[FATAL ERROR] ----You must indicate  the correct path of your image")
             sys.exit(1)
         try:
@@ -33,9 +33,6 @@ class ArgumentParser:
             print("Verify your Image is in *.jpg format")
             sys.exit(1)
         self.image_name = str(sys.argv[1])
-        self.parser = argparse.ArgumentParser()
-        self.parser.add_argument("-s", "-S", help = "Pass the url of an image", action='store_true')
-        self.parser.add_argument("--plot", "-p", help = "Plot the original image and the binary masked image", action='store_true')
         self.imageProcessor = ImageProcessor(self.img)
         self.ploter = Ploter(self.img)
 
@@ -51,6 +48,15 @@ class ArgumentParser:
         photo = Photo(self.image_name)
 
         cv2.imwrite(photo.give_me_a_name(), self.imageProcessor.result_image())
+    
+    def __use(self):
+        """
+        Function that shows how to use the programm
+        """
+        print("To use this programm you need to pass as first parameter a valid image\n" +
+              "You can also pass the flags 's' or 'p' \n" +
+              "The flag s is to saves the segmeted image use to calculate the CCI\n" + 
+              "The flag p is to plot the original image and the segmented image, to apreciate the differences\n")
         
     def main(self):
         """
@@ -58,10 +64,15 @@ class ArgumentParser:
         write the image created and the Cloud Coverage Index in 
         Standar Exit
         """
-        args, _ = self.parser.parse_known_args()   
-        if args.plot:
-            self.ploter.show_compareImages(self.imageProcessor.result_image())
-        if args.s:
-            self.__create_image()
+        if len(sys.argv) > 2:
+            for i in range(2, len(sys.argv)):
+                if sys.argv[i].lower() == "p":
+                    self.ploter.show_compareImages(self.imageProcessor.result_image())
+                elif sys.argv[i].lower() == "s":
+                    self.__create_image()
+                else:
+                    print("This flag is unknown\n\n")
+                    self.__use()
+                    
         print("Cloud Coverage Index: " + str(self.imageProcessor.get_CCI()))
             

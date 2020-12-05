@@ -1,4 +1,4 @@
-# Climatronic 3000
+# Cloud Coverage Index Reporter
 [![Generic badge](https://img.shields.io/badge/version-3.09.10-<COLOR>.svg)](https://shields.io/)
 [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![Generic badge](https://img.shields.io/badge/contributors-2-blue)](https://shields.io/)  
@@ -17,7 +17,7 @@
 
 
 # Acerca del proyecto
-Basicamente este proyecto tiene como objetivo calcular el Índice de Cobertura Nubosa de acuerdo a Fotografías en formato .jpeg con un lente gran angular de 360°, con 4,368 pixeles de ancho, , 2,912 pixeles de alto ( centro en la columna 2184 y el reglón 1456) de alrededor de 32 MB de tamaño. Considerando que la iamgen del cielo es un círculo con radio aproximado de 1324 pixeles
+Básicamente este proyecto tiene como objetivo calcular el Índice de Cobertura Nubosa de acuerdo a Fotografías en formato .jpeg con un lente gran angular de 360°, con 4,368 pixeles de ancho, , 2,912 pixeles de alto ( centro en la columna 2184 y el reglón 1456) de alrededor de 32 MB de tamaño. Considerando que la imagen del cielo es un círculo con radio aproximado de 1324 pixeles
 ```
 resources
 ```
@@ -25,10 +25,14 @@ resources
 dicha carpeta contiene el archivo ejecutable; en este caso para ejecutar desde Terminal, se recomienda 
 
 ```
-python resources/Main.py <Your image.jpeg> [-s, -S (optional)]
+python resources/Main.py <Your image.jpeg> [s, S (optional)] [p, P (optional)]
+```
+O también
+```
+python3 resources/Main.py <Your image.jpeg> [s, S (optional)] [p, P (optional)]
 ```
 ```
-Documentacion
+Documentación
 ```
 
 
@@ -54,22 +58,23 @@ python --version
   Disponible en el siguiente artículo
   [PyPI](https://www.tecmint.com/install-pip-in-linux/) up.  
 
+* Tener instalado pip "Pip Installs Packages" para instalar las biblotecas necesarias
+
 ## Instalación
 1. Clona el repositorio
 ```
 git clone https://github.com/DavidHdezU/Cloud-Cover-Index-Reporter
 ```
-3. Ubicate en Tarea01/src y verifica la instalación de los paquetes con nuestro instalador:
+2. Ubicate en resources y verifica la instalación de los paquetes con nuestro instalador:
   ```
   bash install_librarys.sh
   ```
   Se instalará
-  * `gTTS`
-  * `playsound`
-  * `pandas`
-  * `keyboard`
-  * `googletrans`
- 4. Tras instalar el bash ejecutara las pruebas unitarias, deberá aparecer la leyenda
+  * `OpenCV`
+  * `NumPy`
+  * `Matplot`
+  * `Pdoc`
+ 3. Tras instalar el bash ejecutara las pruebas unitarias, deberá aparecer la leyenda
  ```
  OK
  ```
@@ -80,14 +85,37 @@ git clone https://github.com/DavidHdezU/Cloud-Cover-Index-Reporter
 
 # Uso
 
-Solo ubicarte en el directorio Tarea01/src/ deberás ejecutar
+Sólo ubicate en el directorio resources deberás ejecutar
 ```
-bash launcher.sh
+python3 Menu.py [Ruta de la Imagen a procesar] [s o S (opcional)] [p o P (opcional)]
 ```
-ó 
-```
-python3 Menu.py
-```
+
+La bandera s guardará una imagen en el mismo directorio 
+con la segmentación aplicada a la imagen original con el nombre
+'''
+nombreImagen + -seg + .jpg
+'''
+
+La bandera p te mostrará un plot para apreciar la imagen orginal
+y la imagen segmentada
+
+## Generar documentación
+
+Para generar la documentación del proyecto se usa la API Pdoc
+A continuación se muestran instrucciones de como generarla
+
+1. Primero que nada deberemos poner el siguiente comando en una terminal
+'''
+export PYTHONPATH="LaRutaDondeGuardóElProyecto/Cloud-Cover-Index-Reporter/resources/"
+'''
+2. Crear una carpeta donde guardar losa archivos que se generarán
+3. Ejecutar el siguiente comando en la terminal
+'''
+pdoc --html LaRutaDondeGuardóElProyecto/Cloud-Cover-Index-Reporter/resources/ --output-dir LaCarpetaQueCreó
+
+'''
+4. En la carpeta que creó encontrará una carpeta llamada resources, y ahí estarán los archivos html de la documentación
+5. Abrir index.html
 
 
 # Desarrollado por:
@@ -105,4 +133,4 @@ python3 Menu.py
 [![forthebadge powered-by-electricity](https://forthebadge.com/images/badges/powered-by-electricity.svg)](http://ForTheBadge.com)  
 
 ---
-[Go up](#climatronic-3000)
+[Go up](#Cloud Coverage Index Reporter)

@@ -75,8 +75,8 @@ class ImageProcessor:
         
         (_, img_binary) = cv2.threshold(img_grayscale, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
         
-        return img_binary    
-    
+        return img_binary   
+        
     def __get_CircleArea(self):
         """
         An auxliary method to calculate the area of the
@@ -87,16 +87,23 @@ class ImageProcessor:
         """
         return np.pi * (1324*1324)
     
+    def get_cloudPixels(self):
+        """
+        Returns the number of pixels considered as clouds
+
+        Returns:
+            int: Number of pixels considered as clouds
+        """
+        return cv2.countNonZero(self.result_image())
+    
     def get_CCI(self):
         """
         Calculates de CCI of the given image
 
         Returns:
             float: The CCI of the given image
-        """
-        cloud_pixels = cv2.countNonZero(self.result_image())
-        
-        return cloud_pixels / self.__get_CircleArea()
+        """        
+        return self.get_cloudPixels() / self.__get_CircleArea()
     
             
         
