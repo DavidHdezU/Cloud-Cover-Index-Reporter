@@ -65,7 +65,9 @@ python --version
 ```
 git clone https://github.com/DavidHdezU/Cloud-Cover-Index-Reporter
 ```
+
 2. Ubicate dentro de Cloud-Cover-Index/ y verifica la instalación de los paquetes con nuestro instalador:
+
 
   ```
   bash resources/install_library.sh
@@ -79,7 +81,8 @@ git clone https://github.com/DavidHdezU/Cloud-Cover-Index-Reporter
  ```
  OK
  ```
- lo cual significa que se encuentra correcto
+ lo cual significa que se encuentra correcto.
+ Debe ser de esta manera para que pueda correr las pruebas unitarias, ya que estas hacen uso de las imagenes de las carpeta TestComponents
 
 
 
