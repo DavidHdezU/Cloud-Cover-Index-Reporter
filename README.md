@@ -11,7 +11,7 @@
   * [Prerequisitos](#prerequisites)
   * [Installation](#installation)
 * [Uso](#uso)
-
+* [Documentación](#Documentación)
 
 
 
@@ -25,11 +25,11 @@ resources
 dicha carpeta contiene el archivo ejecutable; en este caso para ejecutar desde Terminal, se recomienda 
 
 ```
-python resources/Main.py <Your image.jpeg> [s, S (optional)] [p, P (optional)]
+python Main.py <abs route/Your image.jpeg> [s, S (optional)] [p, P (optional)]
 ```
 O también
 ```
-python3 resources/Main.py <Your image.jpeg> [s, S (optional)] [p, P (optional)]
+python3 resources/Main.py <abs route /Your image.jpeg> [s, S (optional)] [p, P (optional)]
 ```
 ```
 Documentación
@@ -54,7 +54,7 @@ python --version
   ```
 
 
-* Tu puedes revisar si tu tienes instalado PyPI así como Python 
+* Puedes revisar si tienes instalado PyPI así como Python 
   Disponible en el siguiente artículo
   [PyPI](https://www.tecmint.com/install-pip-in-linux/) up.  
 
@@ -68,6 +68,10 @@ git clone https://github.com/DavidHdezU/Cloud-Cover-Index-Reporter
 2. Ubicate en resources y verifica la instalación de los paquetes con nuestro instalador:
   ```
   bash install_librarys.sh
+  ```
+  ó
+  ```
+  bash resources/install_library.sh
   ```
   Se instalará
   * `OpenCV`
@@ -85,9 +89,9 @@ git clone https://github.com/DavidHdezU/Cloud-Cover-Index-Reporter
 
 # Uso
 
-Sólo ubicate en el directorio resources deberás ejecutar
+Desde la Carptea Cloud-Cover-Index
 ```
-python3 Menu.py [Ruta de la Imagen a procesar] [s o S (opcional)] [p o P (opcional)]
+python3 resources/Menu.py [Ruta de la Imagen a procesar] [s o S (opcional)] [p o P (opcional)]
 ```
 
 La bandera s guardará una imagen en el mismo directorio 
@@ -99,19 +103,29 @@ nombreImagen + -seg + .jpg
 La bandera p te mostrará un plot para apreciar la imagen orginal
 y la imagen segmentada
 
-## Generar documentación
+## Documentación
 
 Para generar la documentación del proyecto se usa la API Pdoc
 A continuación se muestran instrucciones de como generarla
 
 1. Primero que nada deberemos poner el siguiente comando en una terminal
 ```
-export PYTHONPATH="LaRutaDondeGuardóElProyecto/Cloud-Cover-Index-Reporter/resources/"
+export PYTHONPATH="Ruta-Absoulta/Cloud-Cover-Index-Reporter/resources/"
 ```
 2. Crear una carpeta donde guardar losa archivos que se generarán
-3. Ejecutar el siguiente comando en la terminal
 ```
-pdoc --html LaRutaDondeGuardóElProyecto/Cloud-Cover-Index-Reporter/resources/ --output-dir LaCarpetaQueCreó
+Ejemplo: mkdir docs
+```
+3. Ejecutar el siguiente comando en la terminal
+[NOTE] Recuerde que para obtener la ruta absoluta en los Sistemas GNU/LINUX puede disponer del comando 
+```
+pwd
+```
+Y para tal isntancia solo hará falta escribir /resources
+Mismo caso para el la Carpeta Creada
+
+```
+pdoc --html <ruta absoluta/Cloud-Cover-Index-Reporter/resources/> --output-dir <ruta absoluta/LaCarpetaQueCreada>
 
 ```
 4. En la carpeta que creó encontrará una carpeta llamada resources, y ahí estarán los archivos html de la documentación
@@ -133,4 +147,4 @@ pdoc --html LaRutaDondeGuardóElProyecto/Cloud-Cover-Index-Reporter/resources/ -
 [![forthebadge powered-by-electricity](https://forthebadge.com/images/badges/powered-by-electricity.svg)](http://ForTheBadge.com)  
 
 ---
-[Go up](#Cloud Coverage Index Reporter)
+[Go up](#Cloud_Coverage_Index_Reporter)

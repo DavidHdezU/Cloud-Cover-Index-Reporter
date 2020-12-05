@@ -3,7 +3,7 @@ from Image import Image
 from ArgumentParser import ArgumentParser
 from ImageProcessor import ImageProcessor
 from Photo import Photo
-import sys
+import sys,os
 
 class UniTest(unittest.TestCase):
     """ 
@@ -25,14 +25,16 @@ class UniTest(unittest.TestCase):
         
     def test_CCI_whiteImage(self):
         """ Test to verify that the CCI is almost equal to 1, given a white image """
-        img = Image("TestComponents/white.jpg")
+        way=os.path.abspath("TestComponents/white.jpg")
+        img = Image(way)
         processor = ImageProcessor(img)
         cci = processor.get_CCI()
         self.assertAlmostEqual(round(cci, 2), 0.99) # Because the circle in its edges has like a lighthing
         
     def test_CCI_blackImage(self):
         """ Test to verify that the CCI is equal to 0, given a black image """
-        img = Image("TestComponents/black.jpg")
+        way=os.path.abspath("TestComponents/black.jpg")
+        img = Image(way)
         processor = ImageProcessor(img)
         cci = processor.get_CCI()
         self.assertAlmostEqual(round(cci, 2), 0)
