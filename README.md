@@ -92,9 +92,9 @@ python3 Menu.py [Ruta de la Imagen a procesar] [s o S (opcional)] [p o P (opcion
 
 La bandera s guardará una imagen en el mismo directorio 
 con la segmentación aplicada a la imagen original con el nombre
-'''
+```
 nombreImagen + -seg + .jpg
-'''
+```
 
 La bandera p te mostrará un plot para apreciar la imagen orginal
 y la imagen segmentada
@@ -105,15 +105,15 @@ Para generar la documentación del proyecto se usa la API Pdoc
 A continuación se muestran instrucciones de como generarla
 
 1. Primero que nada deberemos poner el siguiente comando en una terminal
-'''
+```
 export PYTHONPATH="LaRutaDondeGuardóElProyecto/Cloud-Cover-Index-Reporter/resources/"
-'''
+```
 2. Crear una carpeta donde guardar losa archivos que se generarán
 3. Ejecutar el siguiente comando en la terminal
-'''
+```
 pdoc --html LaRutaDondeGuardóElProyecto/Cloud-Cover-Index-Reporter/resources/ --output-dir LaCarpetaQueCreó
 
-'''
+```
 4. En la carpeta que creó encontrará una carpeta llamada resources, y ahí estarán los archivos html de la documentación
 5. Abrir index.html
 
