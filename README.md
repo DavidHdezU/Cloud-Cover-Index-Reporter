@@ -65,7 +65,10 @@ python --version
 ```
 git clone https://github.com/DavidHdezU/Cloud-Cover-Index-Reporter
 ```
-2. Ubicate en resources y verifica la instalación de los paquetes con nuestro instalador:
+
+2. Ubicate dentro de Cloud-Cover-Index/ y verifica la instalación de los paquetes con nuestro instalador:
+
+
   ```
   bash resources/install_library.sh
   ```
