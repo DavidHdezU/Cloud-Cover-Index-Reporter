@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import sys
 
 class Image:
     """
@@ -13,7 +14,9 @@ class Image:
             file (str): The URL of the image
         """
         self.file = cv2.imread(file)
-    
+        if self.file.shape[1] != 4368 or self.file.shape[0] !=  2912:
+            print("Invalid image size, try other image")
+            sys.exit(1)
     
     def change_toRGB(self):
         """

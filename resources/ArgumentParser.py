@@ -6,6 +6,7 @@ from Photo import Photo
 import sys
 import cv2
 import os.path
+import imghdr
 
 class ArgumentParser:
     """
@@ -31,6 +32,10 @@ class ArgumentParser:
             
         if not os.path.exists(str(sys.argv[1])) or not os.path.isfile(str(sys.argv[1])):
             print(str(sys.argv[1]) + " is not a file or does not exist")
+            sys.exit(1)
+        extension = str(sys.argv[1]).split(".")[1]
+        if (extension != "JPG"):
+            print("The image extension needs to be .JPG")
             sys.exit(1)
         try:
             self.img = Image(str(sys.argv[1]))
