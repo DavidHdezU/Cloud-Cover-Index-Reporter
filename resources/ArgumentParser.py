@@ -5,6 +5,7 @@ from Image import Image
 from Photo import Photo
 import sys
 import cv2
+import os.path
 
 class ArgumentParser:
     """
@@ -26,6 +27,10 @@ class ArgumentParser:
         """
         if len(sys.argv) <= 1:
             print("Usó  python resources/Main.py <route/Image.jpeg>  [s (optional)] [S (optiona)] [p (optional)] [P optional]")
+            sys.exit(1)
+            
+        if not os.path.exists(str(sys.argv[1])) or not os.path.isfile(str(sys.argv[1])):
+            print(str(sys.argv[1]) + " is not a file or does not exist")
             sys.exit(1)
         try:
             self.img = Image(str(sys.argv[1]))
