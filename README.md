@@ -93,6 +93,7 @@ Desde la Carptea Cloud-Cover-Index
 ```
 python3 resources/Menu.py [Ruta de la Imagen a procesar] [s o S (opcional)] [p o P (opcional)]
 ```
+Cabe recalcar que la foto debe tener extensión .JPG si no el programa lanzará una excepción
 
 La bandera s guardará una imagen en el mismo directorio 
 con la segmentación aplicada a la imagen original con el nombre
