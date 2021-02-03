@@ -6,135 +6,128 @@
 
 
 ## Table of contents
-* [Acerca del proyecto](#acerca-del-proyecto)
-* [Como empezar](#como-empezar)
-  * [Prerequisitos](#prerequisites)
+* [About the project](#acerca-del-proyecto)
+* [How to start](#como-empezar)
+  * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-* [Uso](#uso)
-* [Documentación](#Documentación)
+* [How to use](#uso)
+* [Documentation](#Documentación)
 
 
 
 
-# Acerca del proyecto
-Básicamente este proyecto tiene como objetivo calcular el Índice de Cobertura Nubosa de acuerdo a Fotografías en formato .jpeg con un lente gran angular de 360°, con 4,368 pixeles de ancho, , 2,912 pixeles de alto ( centro en la columna 2184 y el reglón 1456) de alrededor de 32 MB de tamaño. Considerando que la imagen del cielo es un círculo con radio aproximado de 1324 pixeles
+# About the project
+This project aims to calculate the Cloud Coverage Index according to Photographs in .JPG format with a 360 ° wide angle lens, with 4,368 pixels wide, 2,912 pixels high (center in column 2184 and line 1456) about 32MB in size. Considering that the image of the sky is a circle with an approximate radius of 1324 pixels 
 ```
-resources
+src
 ```
 
-dicha carpeta contiene el archivo ejecutable; en este caso para ejecutar desde Terminal, se recomienda 
+this directory contains the executable file; in this case to run from Terminal, it is recommended 
 
 ```
 python Main.py <abs route/Your image.jpeg> [s, S (optional)] [p, P (optional)]
 ```
-O también
+Or
 ```
-python3 resources/Main.py <abs route /Your image.jpeg> [s, S (optional)] [p, P (optional)]
+python3 src/Main.py <abs route /Your image.jpeg> [s, S (optional)] [p, P (optional)]
 ```
-```
-Documentación
-```
+
 
 
 # Como empezar
-Primero que nada, es necesario mencionar que se encuentra escrito en Python, bajo las versiones superiores o iguales a Python3.8, por ello es recomendable actualizar a la versión de Python más reciente a tu ordenador, de lo contrario podrían ocurrir algunas fallas, y  de igual manera recomendamos ejecutar en ordenadores con Sistema Operativo GNU LINUX en cualquiera de sus versiones. 
-Asimismo es necesario instalar algunas bibliotecas extras, no es necesario que te preocupes por instalar de forma correcta cada una de ellas, gracias a un script de auto-instalación
+It is necessary to mention that the project is written in Python, under versions greater than or equal to Python 3.8, therefore it is advisable to update your computer to the most recent Python version, otherwise some failures may occur, and in the same way we recommend running on computers with GNU LINUX Operating System in any of its distros.
+It is also necessary to install some extra libraries, you do not need to worry about installing each one of them correctly, thanks to pip
 
 
-## Prerequisitos
+## Prerequisites
 * Verifica utilizar una versión superior a Python3.6 :
 ```
 python --version
 ```
 > `Python 3.8+` is adviced  
 
-  Nota, en algunos distros de Linux, lo correras como:  
+  On some Linux distros, you will run it as:  
   ```
   python3 --version
   ```
 
 
-* Puedes revisar si tienes instalado PyPI así como Python 
-  Disponible en el siguiente artículo
+* You can check if you have PyPI installed as well as Python
+   Available in the following article 
   [PyPI](https://www.tecmint.com/install-pip-in-linux/) up.  
 
-* Tener instalado pip "Pip Installs Packages" para instalar las biblotecas necesarias
+* Have pip "Pip Installs Packages" installed to install the necessary libraries 
 
-## Instalación
-1. Clona el repositorio
+## How to Install
+1. Clone the repository
 ```
 git clone https://github.com/DavidHdezU/Cloud-Cover-Index-Reporter
 ```
-
-2. Ubicate dentro de Cloud-Cover-Index/ y verifica la instalación de los paquetes con nuestro instalador:
-
+2. Check the installation of the libraries with: 
 
   ```
-  bash resources/install_library.sh
+  pip install -r requirements.txt
   ```
-  Se instalará
+  It will install:
   * `OpenCV`
   * `NumPy`
   * `Matplot`
   * `Pdoc`
- 3. Tras instalar el bash ejecutara las pruebas unitarias, deberá aparecer la leyenda
+ 3. After installing the libraries, please run the unit tests with this command. You will have to locate yourself in the src folder 
  ```
- OK
+ cd Cloud_Coverage_Index/src/
+ python3 -m pytest -v
  ```
- lo cual significa que se encuentra correcto.
- Debe ser de esta manera para que pueda correr las pruebas unitarias, ya que estas hacen uso de las imagenes de las carpeta TestComponents
+ 
+# How to use
 
-
-
-
-# Uso
-
-Desde la Carptea Cloud-Cover-Index
+From the Cloud-Cover-Index directory:
 ```
-python3 resources/Menu.py [Ruta de la Imagen a procesar] [s o S (opcional)] [p o P (opcional)]
-```
-Cabe recalcar que la foto debe tener extensión .JPG si no el programa lanzará una excepción
-
-La bandera s guardará una imagen en el mismo directorio 
-con la segmentación aplicada a la imagen original con el nombre
-```
-nombreImagen + -seg + .jpg
+python3 src/Menu.py [Image to process] [s o S (optional)] [p o P (optional)]
 ```
 
-La bandera p te mostrará un plot para apreciar la imagen orginal
-y la imagen segmentada
+The s flag will save to a new directory called 
+```
+segmented_images
+```
+which will be in the same directory where the src / folder is located, an image with the segmentation applied to the original image with the name 
+```
+imageName + -seg + .JPG
+```
+The p flag will show you a plot to appreciate the original image
+and the segmented image 
 
-## Documentación
+## Documentation
 
-Para generar la documentación del proyecto se usa la API Pdoc
-A continuación se muestran instrucciones de como generarla
+To generate the project documentation, the Pdoc API is used
+Below are instructions on how to generate it:
 
-1. Primero que nada deberemos poner el siguiente comando en una terminal
+1.We must put the following command in a terminal
 ```
-export PYTHONPATH="Ruta-Absoulta/Cloud-Cover-Index-Reporter/resources/"
+export PYTHONPATH="abs-path/Cloud-Cover-Index-Reporter/Cloud_Coverage_Index/src/"
 ```
-2. Crear una carpeta donde guardar losa archivos que se generarán
+2. Create a new directory where to save the files that will be generated 
 ```
-Ejemplo: mkdir docs
+Example: mkdir docs
 ```
-3. Ejecutar el siguiente comando en la terminal
-[NOTE] Recuerde que para obtener la ruta absoluta en los Sistemas GNU/LINUX puede disponer del comando 
+3. Run the following command in terminal 
+[NOTE] Remember that to obtain the absolute path in GNU / LINUX systems you can use the command:
 ```
 pwd
 ```
-Y para tal isntancia solo hará falta escribir /resources
-Mismo caso para el la Carpeta Creada
+And for such an instance it will only be necessary to write / resources
+Same case for the new directory
 
 ```
-pdoc --html <ruta absoluta/Cloud-Cover-Index-Reporter/resources/> --output-dir <ruta absoluta/LaCarpetaQueCreada>
+pdoc --html <ruta absoluta/Cloud-Cover-Index-Reporter/Cloud_Coverage_Index/src/> --output-dir <ruta absoluta/LaCarpetaQueCreada>
 
 ```
-4. En la carpeta que creó encontrará una carpeta llamada resources, y ahí estarán los archivos html de la documentación
-5. Abrir index.html
+4. In the folder you created you will find a folder called resources, and there will be the documentation html files
+5. Open index.html 
 
 
-# Desarrollado por:
-#### David Hernández Urióstegui | No. de Cuenta: 420003708   &   Ian Israel García Vázquez | No. de Cuenta: 317097364
+# Build by:
+#### David Hernández Urióstegui & Ian Israel García Vázquez
 
 [<img src="https://img.shields.io/badge/gmail-D14836?&style=for-the-badge&logo=gmail&logoColor=white"/>](https://mail.google.com/mail/?view=cm&source=mailto&to=iangarcia@ciencias.unam.mx)
 [<img src="https://img.shields.io/badge/gmail-D14836?&style=for-the-badge&logo=gmail&logoColor=white"/>](https://mail.google.com/mail/?view=cm&source=mailto&to=Dhdezu@ciencias.unam.mx)
