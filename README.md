@@ -34,7 +34,7 @@ python3 src/Main.py <abs route /Your image.jpeg> [s, S (optional)] [p, P (option
 
 
 
-# Como empezar
+# How to start
 It is necessary to mention that the project is written in Python, under versions greater than or equal to Python 3.8, therefore it is advisable to update your computer to the most recent Python version, otherwise some failures may occur, and in the same way we recommend running on computers with GNU LINUX Operating System in any of its distros.
 It is also necessary to install some extra libraries, you do not need to worry about installing each one of them correctly, thanks to pip
 
